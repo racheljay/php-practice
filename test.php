@@ -43,7 +43,7 @@ class Article
     protected $title;
     protected $body;
     protected $status;
-    // protected $author;
+    protected $author;
 
 
     /**
