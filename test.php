@@ -20,6 +20,12 @@ Article class, ensures that it validates, and then echoes out the Article as JSO
 Add any methods to Article that are deemed necessary.
 */
 
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
+
+// error_reporting(E_ALL);
+// ini_set("display_errors", 1);
+// include("file_with_errors.php");
 /**
  * Representation of a single author
  */
@@ -32,6 +38,14 @@ class Author
     {
         $this->name = $name;
         $this->email = $email;
+    }
+
+    public function getName(){
+        return $this->name;
+    }
+
+    function getEmail(){
+        return $this->email;
     }
 }
 
@@ -101,7 +115,6 @@ class Article
         $this->title = $title;
     }
 
-
     /**
      * Sets the body parameter
      *
@@ -114,14 +127,8 @@ class Article
         $this->body = $body;
     }
 
-    /**
-     * Sets the author parameter
-     *
-     * @param string $body The article body
-     *
-     * @return void
-     */
-    public function setAuthor($author)
+ 
+    public function setAuthor(Author $author)
     {
         $this->author = $author;
     }
@@ -144,6 +151,28 @@ class Article
      */
     public function validate()
     {
-        // @todo implement me!
+       
     }
+
+    
+    
 }
+
+$author = new Author("Karen", "email@test.com");
+
+
+$article = new Article();
+$article->setTitle("The Stuff");
+$article->setBody("This is the body part");
+$article->setAuthor($author);                                                           
+
+echo $article->getTitle();
+echo "<br>";
+echo $article->getBody();
+
+echo "<br>";
+var_dump($article);
+// echo $author->getName();
+echo "<br>";
+var_dump($author);
+// echo $author->getEmail();
